@@ -41,7 +41,6 @@ class nCov(object):
         self.sub_title = ''
         self.sub_title += u'初始感染者 = ' + str(self.I) + '\n'
 
-
         self.days = days
         self.control_day = control_day
         if self.control_day == 0:
@@ -98,18 +97,13 @@ class nCov(object):
                            )
 
         )
-        if self.mode == 'SIR':
+        if 'R' in self.mode:
             line.add_yaxis(u'康复者', self.R_list,
                            yaxis_index=0,
                            is_smooth=True,
                            label_opts=opts.LabelOpts(is_show=False)
                            )
-        elif self.mode == 'SEIR':
-            line.add_yaxis(u'康复者', self.R_list,
-                           yaxis_index=0,
-                           is_smooth=True,
-                           label_opts=opts.LabelOpts(is_show=False)
-                           )
+        if 'E' in self.mode:
             line.add_yaxis(u'潜伏者', self.E_list,
                            yaxis_index=0,
                            is_smooth=True,
